@@ -203,8 +203,8 @@ export function ImagePreview({ urls, filenames, initialIndex, onClose }: ImagePr
             } else if (e.touches.length === 1 && scale > 1 && touchStartXRef.current !== null && touchStartYRef.current !== null) {
                 const dx = e.touches[0].clientX - touchStartXRef.current;
                 const dy = e.touches[0].clientY - touchStartYRef.current;
-                setTranslateX((tx) => touchTxStartRef.current + dx);
-                setTranslateY((ty) => touchTyStartRef.current + dy);
+                setTranslateX((_tx) => touchTxStartRef.current + dx);
+                setTranslateY((_ty) => touchTyStartRef.current + dy);
             }
         };
 

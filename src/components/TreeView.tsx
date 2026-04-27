@@ -5,7 +5,7 @@
 /** biome-ignore-all lint/correctness/useExhaustiveDependencies: stable helper functions */
 /** biome-ignore-all lint/correctness/noChildrenProp: prop named children is intentional */
 /** biome-ignore-all lint/style/useExponentiationOperator: use ** instead of Math.pow */
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { formatDate } from "../lib/dateFormatter";
 import type { GedcomData, Individual } from "../lib/gedcomParser";
 import { PersonDetails } from "./PersonDetails";
@@ -23,8 +23,7 @@ interface TreeViewProps {
     totalWidth: number;
     totalHeight: number;
     gedcomData: GedcomData;
-    theme: string;
-    onPhotoClick?: (urls: string[], index: number) => void;
+    onPhotoClick?: (urls: string[], index: number, filenames: string[]) => void;
 }
 
 export function TreeView({
@@ -35,7 +34,6 @@ export function TreeView({
     totalWidth,
     totalHeight,
     gedcomData,
-    theme,
     onPhotoClick,
 }: TreeViewProps) {
     const [scale, setScale] = useState(1);
@@ -570,7 +568,6 @@ export function TreeView({
                     onClose={() => setFocusedId(null)}
                     onPersonClick={(id) => setFocusedId(id)}
                     onPersonFocus={setFocusedId}
-                    theme={theme}
                     onPhotoClick={onPhotoClick}
                 />
             )}

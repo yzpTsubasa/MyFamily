@@ -132,7 +132,6 @@ function App() {
                     totalWidth={treeLayout.totalWidth}
                     totalHeight={treeLayout.totalHeight}
                     gedcomData={gedcomData}
-                    theme={theme}
                     onPhotoClick={openPhotoPreview}
                 />
             </main>

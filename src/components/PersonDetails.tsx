@@ -3,7 +3,7 @@
 /** biome-ignore-all lint/a11y/useButtonType: buttons are not inside forms */
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: items are ordered and do not reorder */
 
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { formatDate } from "../lib/dateFormatter";
 import type { Individual, MediaRecord } from "../lib/gedcomParser";
 import { useUiStore } from "../stores/store";
@@ -21,7 +21,6 @@ interface PersonDetailsProps {
     onClose: () => void;
     onPersonClick: (id: string) => void;
     onPersonFocus: (id: string) => void;
-    theme: string;
     onPhotoClick?: (urls: string[], index: number, filenames: string[]) => void;
 }
 
@@ -47,7 +46,6 @@ export function PersonDetails({
     onClose,
     onPersonClick,
     onPersonFocus,
-    theme,
     onPhotoClick,
 }: PersonDetailsProps) {
     // Resolve image URLs from media references

@@ -98,7 +98,6 @@ export function buildTreeLayout(data: GedcomData, startId: string = "@I0@"): Tre
 
     // 根据实际节点位置计算总宽高
     const totalWidth = Math.max(root.subtreeWidth, ...nodes.map((n) => n.x + NODE_WIDTH / 2)) + 40;
-    const maxDepth = Math.max(...nodes.map((n) => n.depth));
     const totalHeight = Math.max(...nodes.map((n) => n.y + NODE_HEIGHT)) + 100;
 
     return { nodes, connections, totalWidth, totalHeight };
@@ -342,12 +341,13 @@ function collectFosterConnections(nodes: TreeNode[], connections: TreeConnection
 function collectSpouseParentConnections(nodes: TreeNode[], connections: TreeConnection[]): void {
     nodes.forEach((node) => {
         if (node.spouseParents && node.spouse) {
+            const spouseNode = node.spouse;
             node.spouseParents.forEach((parent) => {
                 connections.push({
                     fromX: parent.x,
                     fromY: parent.y + NODE_HEIGHT,
-                    toX: node.spouse.x,
-                    toY: node.spouse.y,
+                    toX: spouseNode.x,
+                    toY: spouseNode.y,
                     type: "parent-child",
                 });
             });
